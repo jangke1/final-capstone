@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Waste Segregation Monitoring System — Sign In</title>
+
+    <!-- Design System & Components -->
+    <link rel="stylesheet" href="../assets/css/styles.css"/>
+
+  </head>
+  <body class="login-page">
+    <main class="card">
+      <div class="logo" aria-hidden="true">
+        <img
+          src="/assets/img/bulsu-logo.png"
+          alt="Bulacan State University logo"
+        />
+      </div>
+
+      <h1 class="title">Smart Waste Segregation Monitoring System</h1>
+      <p class="subtitle">
+        IoT-Enabled Infrastructure System for Automated Waste Segregation in a
+        Smart Campus Environment
+      </p>
+
+      <form id="loginForm">
+        <div class="field">
+          <label for="email">Email Address</label>
+          <div class="input-wrap">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+              <path d="m22 7-10 5L2 7"></path>
+            </svg>
+            <input
+              id="email"
+              type="email"
+              name="email"
+              placeholder="name@bulsu.edu.ph"
+              autocomplete="email"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <div class="input-wrap">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <rect x="3" y="11" width="18" height="11" rx="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <input
+              id="password"
+              type="password"
+              name="password"
+              placeholder="••••••••"
+              autocomplete="current-password"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <label class="remember">
+            <input type="checkbox" name="remember" />
+            Remember me
+          </label>
+          <a class="forgot" href="#">Forgot Password?</a>
+        </div>
+        <p id="errorDisplay" style="color: #ff3333; font-size: 0.875rem; text-align: center; margin-bottom: 10px; min-height: 20px;"></p>
+        <button class="submit" type="submit">
+          Sign In to Dashboard
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            width="18"
+            height="18"
+            aria-hidden="true"
+          >
+            <path d="M5 12h14"></path>
+            <path d="m12 5 7 7-7 7"></path>
+          </svg>
+        </button>
+      </form>
+
+      <div class="footer">
+        <p>Bulacan State University &ndash; Bustos Campus</p>
+        <p>Capstone Project &copy; 2026</p>
+      </div>
+    </main>
+    <script defer src="/assets/js/login.js"></script>
+  </body>
+</html>

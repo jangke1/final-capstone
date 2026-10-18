@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-background">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Waste Segregation System — Bulacan State University</title>
+  <meta name="description" content="Real-time monitoring dashboard for 6-compartment automated waste segregation units at Bulacan State University, Bustos Campus." />
+  <meta name="theme-color" content="#8b0000" />
+  
+  <!-- Design System & Components -->
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+
+</head>
+<body class="admin-dashboard-page">
+  <div class="container">
+    <!-- ===== Header ===== -->
+    <header class="site-header">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 19H4.815a1.83 1.83 0 0 1-1.57-.881 1.785 1.785 0 0 1-.004-1.784L7.196 9.5"/>
+            <path d="M11 19h8.203a1.83 1.83 0 0 0 1.556-.89 1.784 1.784 0 0 0 0-1.775l-1.226-2.12"/>
+            <path d="m14 16-3 3 3 3"/>
+            <path d="M8.293 13.596 7.196 9.5 3.1 10.598"/>
+            <path d="m9.344 5.811 1.093-1.892A1.83 1.83 0 0 1 11.985 3a1.784 1.784 0 0 1 1.546.888l3.943 6.843"/>
+            <path d="m13.378 9.633 4.096 1.098 1.097-4.096"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>Smart Waste Segregation System</h1>
+          <p class="campus">Bulacan State University - Bustos Campus</p>
+          <p class="tagline">6-Compartment Automated Segregation Units &bull; Real-time Monitoring</p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button class="btn btn-primary" type="button" id="generate-report-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/>
+          </svg>
+          Generate Report
+        </button>
+
+        <button class="btn btn-outline" type="button" id="notification-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/>
+            <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>
+          </svg>
+          Notification
+          <span class="badge" id="notification-badge" aria-label="8 new notifications">8</span>
+        </button>
+
+        <div class="account-pill">
+          <div class="avatar">
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4"></circle><path d="M4 20c0-4.4 3.6-8 8-8s8 3.6 8 8"></path></svg>
+          </div>
+          <div>
+            <div class="account-name">Loading...</div>
+            <div class="account-role">Loading...</div>
+          </div>
+          <div class="divider-v"></div>
+          <button class="sign-out" id="sign-out-btn">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+            Sign Out
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== Legend ===== -->
+    <ul class="legend" aria-label="Compartment color legend">
+      <li><span class="dot dot-blue" aria-hidden="true"></span> Plastic Bottles</li>
+      <li><span class="dot dot-purple" aria-hidden="true"></span> Plastics</li>
+      <li><span class="dot dot-orange" aria-hidden="true"></span> Papers</li>
+    </ul>
+
+    <!-- ===== Stat cards ===== -->
+    <section class="stats" aria-label="Summary statistics">
+      <article class="stat-card">
+        <div class="stat-head">
+          <h2>Segregation Units</h2>
+          <span class="stat-icon green" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m21 16-9 5-9-5V8l9-5 9 5z"/><path d="m3 8 9 5 9-5"/><path d="M12 13v8"/>
+            </svg>
+          </span>
+        </div>
+        <p class="stat-value">6</p>
+        <p class="stat-sub">Active monitoring stations</p>
+      </article>
+
+      <article class="stat-card">
+        <div class="stat-head">
+          <h2>Full Compartments</h2>
+          <span class="stat-icon red" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/>
+              <path d="M12 9v4"/><path d="M12 17h.01"/>
+            </svg>
+          </span>
+        </div>
+        <p class="stat-value">6</p>
+        <p class="stat-sub">Require immediate emptying</p>
+      </article>
+    </section>
+
+    <!-- ===== Live monitoring ===== -->
+    <main>
+      <h2 class="section-title">Live Unit Monitoring</h2>
+
+      <section class="units" aria-label="Live segregation unit monitoring">
+        <!-- Unit 1 -->
+        <article class="unit-card">
+          <header class="unit-head">
+            <span class="unit-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m21 16-9 5-9-5V8l9-5 9 5z"/><path d="m3 8 9 5 9-5"/><path d="M12 13v8"/>
+              </svg>
+            </span>
+            <div class="unit-meta">
+              <h3>Segregation Unit 1</h3>
+              <p>Pancho Hall - Floor 1</p>
+              <p>ID: UNIT-001</p>
+            </div>
+            <span class="status-tag is-connecting" data-bin-connection>Connecting to MQTT</span>
+          </header>
+
+          <p class="compartments-label">Compartments Status:</p>
+
+          <div class="compartment filling" data-bin="paper">
+            <div class="compartment-head">
+              <span class="compartment-name"><span class="dot dot-orange" aria-hidden="true"></span> Paper</span>
+              <span class="pill pill-filling" data-bin-status><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><span data-bin-status-label>Filling</span></span>
+            </div>
+            <div class="fill-row"><span>Fill Level</span><span class="amount" data-bin-fill-level>--L / 100L (--%)</span></div>
+            <div class="progress"><span data-bin-progress style="width:0%"></span></div>
+          </div>
+
+          <div class="compartment filling" data-bin="plastic">
+            <div class="compartment-head">
+              <span class="compartment-name"><span class="dot dot-purple" aria-hidden="true"></span> Plastic</span>
+              <span class="pill pill-filling" data-bin-status><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><span data-bin-status-label>Filling</span></span>
+            </div>
+            <div class="fill-row"><span>Fill Level</span><span class="amount" data-bin-fill-level>--L / 100L (--%)</span></div>
+            <div class="progress"><span data-bin-progress style="width:0%"></span></div>
+          </div>
+
+          <div class="compartment filling" data-bin="metal">
+            <div class="compartment-head">
+              <span class="compartment-name"><span class="dot dot-blue" aria-hidden="true"></span> Metal</span>
+              <span class="pill pill-filling" data-bin-status><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><span data-bin-status-label>Filling</span></span>
+            </div>
+            <div class="fill-row"><span>Fill Level</span><span class="amount" data-bin-fill-level>--L / 100L (--%)</span></div>
+            <div class="progress"><span data-bin-progress style="width:0%"></span></div>
+          </div>
+
+          <div class="compartment filling" data-bin="others">
+            <div class="compartment-head">
+              <span class="compartment-name"><span class="dot dot-blue" aria-hidden="true"></span> Others</span>
+              <span class="pill pill-filling" data-bin-status><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><span data-bin-status-label>Filling</span></span>
+            </div>
+            <div class="fill-row"><span>Fill Level</span><span class="amount" data-bin-fill-level>--L / 100L (--%)</span></div>
+            <div class="progress"><span data-bin-progress style="width:0%"></span></div>
+          </div>
+        </article>
+
+        <!-- Unit 2 -->
+        <article class="unit-card">
+          <header class="unit-head">
+            <span class="unit-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m21 16-9 5-9-5V8l9-5 9 5z"/><path d="m3 8 9 5 9-5"/><path d="M12 13v8"/>
+              </svg>
+            </span>
+            <div class="unit-meta">
+              <h3>Segregation Unit 2</h3>
+              <p>Pancho Hall - Floor 2</p>
+              <p>ID: UNIT-002</p>
+            </div>
+            <span class="status-tag is-static">Backend not connected</span>
+          </header>
+
+          <p class="compartments-label">Compartments Status:</p>
+
+          <div class="compartment filling">
+            <div class="compartment-head">
+              <span class="compartment-name"><span class="dot dot-orange" aria-hidden="true"></span> Paper</span>
+              <span class="pill pill-filling"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>Offline</span>
+            </div>
+            <div class="fill-row"><span>Fill Level</span><span class="amount">--L / 100L (--%)</span></div>
+            <div class="progress"><span style="width:0%"></span></div>
+          </div>
+
+          <div class="compartment filling">
+            <div class="compartment-head">
+              <span class="compartment-name"><span class="dot dot-purple" aria-hidden="true"></span> Plastic</span>
+              <span class="pill pill-filling"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>Offline</span>
+            </div>
+            <div class="fill-row"><span>Fill Level</span><span class="amount">--L / 100L (--%)</span></div>
+            <div class="progress"><span style="width:0%"></span></div>
+          </div>
+
+          <div class="compartment filling">
+            <div class="compartment-head">
+              <span class="compartment-name"><span class="dot dot-blue" aria-hidden="true"></span> Metal</span>
+              <span class="pill pill-filling"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>Offline</span>
+            </div>
+            <div class="fill-row"><span>Fill Level</span><span class="amount">--L / 100L (--%)</span></div>
+            <div class="progress"><span style="width:0%"></span></div>
+          </div>
+
+          <div class="compartment filling">
+            <div class="compartment-head">
+              <span class="compartment-name"><span class="dot dot-blue" aria-hidden="true"></span> Others</span>
+              <span class="pill pill-filling"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>Offline</span>
+            </div>
+            <div class="fill-row"><span>Fill Level</span><span class="amount">--L / 100L (--%)</span></div>
+            <div class="progress"><span style="width:0%"></span></div>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <div class="notification-overlay" id="notification-overlay" aria-hidden="true">
+    <section class="notification-modal" role="dialog" aria-modal="true" aria-labelledby="notification-title">
+      <button class="report-close notification-close" type="button" id="notification-close" aria-label="Close notifications">&times;</button>
+
+      <div class="notification-header">
+        <div class="notification-heading">
+          <div class="notification-heading-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/>
+              <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>
+            </svg>
+          </div>
+          <div class="notification-title-wrap">
+            <h2 class="notification-title" id="notification-title">Compartment Alerts</h2>
+            <p class="notification-subtitle" id="notification-summary">12 compartments require attention</p>
+          </div>
+        </div>
+
+        <button class="notification-action" type="button" id="notification-clear-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 6h18"/>
+            <path d="M8 6V4h8v2"/>
+            <path d="M19 6l-1 14H6L5 6"/>
+            <path d="M10 11v6"/>
+            <path d="M14 11v6"/>
+          </svg>
+          Clear All
+        </button>
+      </div>
+
+      <div class="notification-list" id="notification-list" aria-live="polite"></div>
+    </section>
+  </div>
+
+  <div class="report-overlay" id="report-overlay" aria-hidden="true">
+    <section class="report-modal" role="dialog" aria-modal="true" aria-labelledby="report-title">
+      <button class="report-close" type="button" id="report-close" aria-label="Close report preview">&times;</button>
+
+      <div class="report-header">
+        <div class="report-badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 19H4.815a1.83 1.83 0 0 1-1.57-.881 1.785 1.785 0 0 1-.004-1.784L7.196 9.5"/>
+            <path d="M11 19h8.203a1.83 1.83 0 0 0 1.556-.89 1.784 1.784 0 0 0 0-1.775l-1.226-2.12"/>
+            <path d="m14 16-3 3 3 3"/>
+            <path d="M8.293 13.596 7.196 9.5 3.1 10.598"/>
+            <path d="m9.344 5.811 1.093-1.892A1.83 1.83 0 0 1 11.985 3a1.784 1.784 0 0 1 1.546.888l3.943 6.843"/>
+            <path d="m13.378 9.633 4.096 1.098 1.097-4.096"/>
+          </svg>
+        </div>
+        <h2 class="report-title" id="report-title">Smart Waste Segregation System</h2>
+        <p class="report-campus">Bulacan State University - Bustos Campus</p>
+        <p class="report-generated">Generated: July 17, 2026 at 08:53 PM</p>
+        <button class="btn btn-outline report-print" type="button" id="report-print">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/>
+          </svg>
+          Print Report
+        </button>
+      </div>
+
+      <div class="report-panel">
+        <div class="report-panel-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 4h16v16H4z"/>
+            <path d="M8 2v4"/>
+            <path d="M16 2v4"/>
+            <path d="M4 10h16"/>
+          </svg>
+          Previous Week Summary (Jul 10-16, 2026)
+        </div>
+
+        <div class="report-metrics" aria-label="Summary metrics">
+          <div class="metric-card metric-blue">
+            <h3>487 kg</h3>
+            <p>Plastic Bottles</p>
+          </div>
+          <div class="metric-card metric-purple">
+            <h3>423 kg</h3>
+            <p>Plastics</p>
+          </div>
+          <div class="metric-card metric-orange">
+            <h3>465 kg</h3>
+            <p>Papers</p>
+          </div>
+          <div class="metric-card metric-green">
+            <h3>42</h3>
+            <p>Compartments Emptied</p>
+          </div>
+        </div>
+
+        <div class="report-chart" aria-label="Weekly report chart preview">
+          <svg viewBox="0 0 720 400" role="img" aria-label="Waste totals by day"></svg>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script defer src="../../assets/js/report-chart.js"></script>
+  <script defer src="../../assets/js/password-confirm.js"></script>
+  <script defer src="../../assets/js/staff-dashboard.js"></script>
+  <script defer src="../../assets/js/bin-monitor.js"></script>
+</body>
+</html>

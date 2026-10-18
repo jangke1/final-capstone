@@ -1,0 +1,835 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard — Unit Management</title>
+
+    <!-- Design System & Components -->
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+  <body class="admin-panel-page">
+    <div class="page">
+      <!-- Top bar -->
+      <div class="top-bar">
+        <a href="dashboard" class="back-btn">
+          <svg
+            class="icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+          Back to Dashboard
+        </a>
+
+        <div class="account-pill">
+          <div class="avatar">
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+              <circle cx="12" cy="8" r="4"></circle>
+              <path d="M4 20c0-4.4 3.6-8 8-8s8 3.6 8 8"></path>
+            </svg>
+          </div>
+          <div>
+            <div class="account-name">Loading...</div>
+            <div class="account-role">Loading...</div>
+          </div>
+          <div class="divider-v"></div>
+          <button class="sign-out" id="sign-out-btn">
+            <svg
+              class="icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+            Sign Out
+          </button>
+        </div>
+      </div>
+
+      <!-- Heading -->
+      <div class="heading">
+        <h1>Admin Dashboard</h1>
+        <p>System Management &amp; Configuration</p>
+      </div>
+
+      <!-- Stat cards -->
+      <div class="stats-grid">
+        <div class="stat-card green">
+          <div class="stat-label">
+            <svg
+              class="icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+            Total Users
+          </div>
+          <div>
+            <div class="stat-value" data-admin-stat="users-total">0</div>
+            <div class="stat-sub" data-admin-stat="users-sub">Registered accounts</div>
+          </div>
+        </div>
+
+        <div class="stat-card amber">
+          <div class="stat-label">
+            <svg
+              class="icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path
+                d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
+              ></path>
+            </svg>
+            Total Units
+          </div>
+          <div>
+            <div class="stat-value" data-admin-stat="units-total">0</div>
+            <div class="stat-sub" data-admin-stat="units-active">0 active</div>
+          </div>
+        </div>
+
+        <div class="stat-card red">
+          <div class="stat-label">
+            <svg
+              class="icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            </svg>
+            System Logs
+          </div>
+          <div>
+            <div class="stat-value" data-admin-stat="logs-total">0</div>
+            <div class="stat-sub">Last 24 hours</div>
+          </div>
+        </div>
+
+        <div class="stat-card blue">
+          <div class="stat-label">
+            <svg
+              class="icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="18" y1="20" x2="18" y2="10"></line>
+              <line x1="12" y1="20" x2="12" y2="4"></line>
+              <line x1="6" y1="20" x2="6" y2="14"></line>
+            </svg>
+            System Status
+          </div>
+          <div>
+            <div class="stat-value">Online</div>
+            <div class="stat-sub">All systems operational</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab nav -->
+      <nav class="tab-nav">
+        <button class="tab" data-tab="users">
+          <svg
+            class="icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+          User Management
+        </button>
+        <button class="tab active" data-tab="units">
+          <svg
+            class="icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path
+              d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
+            ></path>
+          </svg>
+          Unit Management
+        </button>
+        <button class="tab" data-tab="logs">
+          <svg
+            class="icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"
+            ></path>
+          </svg>
+          <span>System Logs</span>
+        </button>
+        <button class="tab" data-tab="settings">
+          <svg
+            class="icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="3"></circle>
+            <path
+              d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"
+            ></path>
+          </svg>
+          Settings
+        </button>
+      </nav>
+
+      <!-- User Management panel -->
+      <section class="panel" id="users-panel" data-panel="users">
+        <div class="panel-header">
+          <div>
+            <h2>User Accounts</h2>
+            <p>Manage user accounts and permissions</p>
+          </div>
+          <button class="add-btn" type="button">
+            <svg
+              class="icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            Add User
+          </button>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Role</th>
+                <th>Created</th>
+                <th>Last Login</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="users-tbody">
+              <!-- rows injected by JS -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Add User Modal -->
+      <div class="modal-overlay" id="add-user-overlay">
+        <div class="modal modal-sm">
+          <div class="modal-header">
+            <div>
+              <h3>Add New Staff</h3>
+              <p
+                style="
+                  margin-top: 4px;
+                  color: var(--color-text-muted);
+                  font-size: var(--font-size-sm);
+                "
+              >
+                Create a new staff account for the system
+              </p>
+            </div>
+            <button class="modal-close" id="add-user-close" aria-label="Close">
+              <svg
+                class="icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+
+          <form id="add-user-form">
+            <div class="modal-body">
+              <div class="form-group">
+                <label class="form-label" for="add-user-username"
+                  >Username</label
+                >
+                <input
+                  class="form-input"
+                  type="text"
+                  id="add-user-username"
+                  name="username"
+                  placeholder="Enter username"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="add-user-email">Email</label>
+                <input
+                  class="form-input"
+                  type="email"
+                  id="add-user-email"
+                  name="email"
+                  placeholder="user@bulsu.edu.ph"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="add-user-phone">Phone Number</label>
+                <input class="form-input" type="tel" id="add-user-phone" name="phoneNumber" placeholder="+639123456789" pattern="[+][1-9][0-9]{7,14}" autocomplete="tel" required />
+              </div>
+
+              <div class="form-group" style="margin-bottom: 0">
+                <label class="form-label" for="add-user-password"
+                  >Password</label
+                >
+                <input
+                  class="form-input"
+                  type="password"
+                  id="add-user-password"
+                  name="password"
+                  placeholder="Enter password"
+                  required
+                />
+              </div>
+
+              <div class="form-group" style="margin-bottom: 0">
+                <label class="form-label" for="add-user-current-password"
+                  >Your Password</label
+                >
+                <input
+                  class="form-input"
+                  type="password"
+                  id="add-user-current-password"
+                  name="currentPassword"
+                  autocomplete="current-password"
+                  required
+                />
+              </div>
+              <p
+                class="form-error"
+                id="add-user-error"
+                style="display: none; margin-top: var(--spacing-md)"
+              ></p>
+            </div>
+
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-outline"
+                id="add-user-cancel"
+              >
+                Cancel
+              </button>
+              <button type="submit" class="btn btn-danger">Add User</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Edit User Modal -->
+      <div class="modal-overlay" id="edit-user-overlay">
+        <div class="modal modal-sm">
+          <div class="modal-header">
+            <div>
+              <h3>Edit Staff</h3>
+              <p
+                style="
+                  margin-top: 4px;
+                  color: var(--color-text-muted);
+                  font-size: var(--font-size-sm);
+                "
+              >
+                Update account details and permissions
+              </p>
+            </div>
+            <button class="modal-close" id="edit-user-close" aria-label="Close">
+              <svg
+                class="icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+
+          <form id="edit-user-form">
+            <input type="hidden" id="edit-user-id" name="id" />
+            <div class="modal-body">
+              <div class="form-group">
+                <label class="form-label" for="edit-user-username"
+                  >Username</label
+                >
+                <input
+                  class="form-input"
+                  type="text"
+                  id="edit-user-username"
+                  name="username"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="edit-user-email">Email</label>
+                <input
+                  class="form-input"
+                  type="email"
+                  id="edit-user-email"
+                  name="email"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="edit-user-phone">Phone Number</label>
+                <input class="form-input" type="tel" id="edit-user-phone" name="phoneNumber" pattern="[+][1-9][0-9]{7,14}" autocomplete="tel" required />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="edit-user-password"
+                  >Password</label
+                >
+                <input
+                  class="form-input"
+                  type="password"
+                  id="edit-user-password"
+                  name="password"
+                  placeholder="Leave blank to keep current password"
+                />
+              </div>
+
+              <div class="form-group" style="margin-bottom: 0">
+                <label class="form-label" for="edit-user-role">Role</label>
+                <select
+                  class="form-select"
+                  id="edit-user-role"
+                  name="role"
+                  required
+                >
+                  <option value="staff">Staff</option>
+                  <option value="admin">Administrator</option>
+                </select>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 0">
+                <label class="form-label" for="edit-user-current-password">Your Password</label>
+                <input
+                  class="form-input"
+                  type="password"
+                  id="edit-user-current-password"
+                  name="currentPassword"
+                  autocomplete="current-password"
+                  required
+                />
+              </div>
+
+              <p
+                class="form-error"
+                id="edit-user-error"
+                style="display: none; margin-top: var(--spacing-md)"
+              ></p>
+            </div>
+
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-outline"
+                id="edit-user-cancel"
+              >
+                Cancel
+              </button>
+              <button type="submit" class="btn btn-danger">Save Changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Delete User Confirmation Modal -->
+      <div class="modal-overlay" id="delete-user-overlay">
+        <div class="modal modal-sm">
+          <div class="modal-header">
+            <div>
+              <h3>Delete User</h3>
+              <p
+                style="
+                  margin-top: 4px;
+                  color: var(--color-text-muted);
+                  font-size: var(--font-size-sm);
+                "
+              >
+                This action cannot be undone
+              </p>
+            </div>
+            <button
+              class="modal-close"
+              id="delete-user-close"
+              aria-label="Close"
+            >
+              <svg
+                class="icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+
+          <div class="modal-body">
+            <p>
+              Are you sure you want to delete
+              <strong id="delete-user-name"></strong>? This will permanently
+              remove their account.
+            </p>
+            <div class="form-group" style="margin-top: var(--spacing-md); margin-bottom: 0">
+              <label class="form-label" for="delete-user-admin-password"
+                >Your Password</label
+              >
+              <input
+                class="form-input"
+                type="password"
+                id="delete-user-admin-password"
+                autocomplete="current-password"
+                required
+              />
+            </div>
+            <p
+              class="form-error"
+              id="delete-user-error"
+              style="display: none; margin-top: var(--spacing-md)"
+            ></p>
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-outline"
+              id="delete-user-cancel"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              id="delete-user-confirm"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Units panel -->
+      <section class="panel active" id="units-panel" data-panel="units">
+        <div class="panel-header">
+          <div>
+            <h2>Segregation Units</h2>
+            <p>Manage waste segregation units across campus</p>
+          </div>
+          <button class="add-btn">
+            <svg
+              class="icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            Add Unit
+          </button>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Unit ID</th>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Assigned User</th>
+                <th>Status</th>
+                <th>Install Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="units-tbody">
+              <!-- rows injected by JS -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Add Unit Modal -->
+      <div class="modal-overlay" id="add-unit-overlay">
+        <div class="modal modal-sm" role="dialog" aria-modal="true" aria-labelledby="add-unit-title">
+          <div class="modal-header">
+            <div>
+              <h3 id="add-unit-title">Add Segregation Unit</h3>
+              <p style="margin-top: 4px; color: var(--color-text-muted); font-size: var(--font-size-sm);">
+                Add a unit to the campus inventory
+              </p>
+            </div>
+            <button class="modal-close" type="button" id="add-unit-close" aria-label="Close">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+
+          <form id="add-unit-form">
+            <div class="modal-body">
+              <div class="form-group">
+                <label class="form-label" for="add-unit-id">Unit ID</label>
+                <input class="form-input" type="text" id="add-unit-id" name="unitId" placeholder="UNIT-007" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="add-unit-name">Name</label>
+                <input class="form-input" type="text" id="add-unit-name" name="name" placeholder="Segregation Unit 7" required />
+              </div>
+              <div class="form-group" style="margin-bottom: 0">
+                <label class="form-label" for="add-unit-location">Location</label>
+                <input class="form-input" type="text" id="add-unit-location" name="location" placeholder="Building - Floor" required />
+              </div>
+              <div class="form-group" style="margin-bottom: 0">
+                <label class="form-label" for="add-unit-assigned-user">Assigned User</label>
+                <select class="form-select" id="add-unit-assigned-user" name="assignedUserId">
+                  <option value="">No user assigned</option>
+                </select>
+              </div>
+              <div class="form-group" style="margin-bottom: 0">
+                <label class="form-label" for="add-unit-current-password">Your Password</label>
+                <input class="form-input" type="password" id="add-unit-current-password" name="currentPassword" autocomplete="current-password" required />
+              </div>
+              <p class="form-error" id="add-unit-error" role="alert" style="display: none; margin-top: var(--spacing-md)"></p>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline" id="add-unit-cancel">Cancel</button>
+              <button type="submit" class="btn btn-primary">Add Unit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="modal-overlay" id="edit-unit-overlay">
+        <div class="modal modal-sm" role="dialog" aria-modal="true" aria-labelledby="edit-unit-title">
+          <div class="modal-header">
+            <div>
+              <h3 id="edit-unit-title">Edit Segregation Unit</h3>
+              <p style="margin-top: 4px; color: var(--color-text-muted); font-size: var(--font-size-sm);">
+                Update the unit inventory details
+              </p>
+            </div>
+            <button class="modal-close" type="button" id="edit-unit-close" aria-label="Close">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+
+          <form id="edit-unit-form">
+            <div class="modal-body">
+              <input type="hidden" id="edit-unit-db-id" name="id" />
+              <div class="form-group">
+                <label class="form-label" for="edit-unit-id">Unit ID</label>
+                <input class="form-input" type="text" id="edit-unit-id" name="unitId" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="edit-unit-name">Name</label>
+                <input class="form-input" type="text" id="edit-unit-name" name="name" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="edit-unit-location">Location</label>
+                <input class="form-input" type="text" id="edit-unit-location" name="location" required />
+              </div>
+              <div class="form-group" style="margin-bottom: 0">
+                <label class="form-label" for="edit-unit-assigned-user">Assigned User</label>
+                <select class="form-select" id="edit-unit-assigned-user" name="assignedUserId">
+                  <option value="">No user assigned</option>
+                </select>
+              </div>
+              <div class="form-group" style="margin-bottom: 0">
+                <label class="form-label" for="edit-unit-status">Status</label>
+                <select class="form-input" id="edit-unit-status" name="status" required>
+                  <option value="Active">Active</option>
+                  <option value="Inactive">Inactive</option>
+                </select>
+              </div>
+              <div class="form-group" style="margin-bottom: 0">
+                <label class="form-label" for="edit-unit-current-password">Your Password</label>
+                <input class="form-input" type="password" id="edit-unit-current-password" name="currentPassword" autocomplete="current-password" required />
+              </div>
+              <p class="form-error" id="edit-unit-error" role="alert" style="display: none; margin-top: var(--spacing-md)"></p>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline" id="edit-unit-cancel">Cancel</button>
+              <button type="submit" class="btn btn-primary">Save Changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- System Logs panel -->
+      <section class="panel" id="logs-panel" data-panel="logs">
+        <div class="panel-header">
+          <div>
+            <h2>System Logs</h2>
+            <p>View system activity and events</p>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Timestamp</th>
+                <th>Event Type</th>
+                <th>User</th>
+                <th>Description</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="logs-tbody">
+              <!-- rows injected by JS -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Settings panel -->
+<!-- Settings panel -->
+<section class="panel" id="settings-panel" data-panel="settings">
+  <div class="panel-header">
+    <div>
+      <h2>Settings</h2>
+      <p>System configuration and preferences</p>
+    </div>
+  </div>
+
+  <div class="settings-card">
+    <h3>Alert Configuration</h3>
+    <p class="settings-card-desc">Configure system alert thresholds and notification settings</p>
+
+    <div class="form-group" style="margin-bottom: 0; max-width: 320px;">
+      <label class="form-label" for="alert-threshold">Alert Threshold (%)</label>
+      <input
+        class="form-input"
+        type="number"
+        id="alert-threshold"
+        name="alertThreshold"
+        min="0"
+        max="100"
+        step="1"
+        value="85"
+      />
+      <p class="form-help">Alert will be triggered when compartment reaches this fill percentage</p>
+      <button class="btn btn-primary" type="button" id="save-alert-threshold">Save Threshold</button>
+      <p class="form-help" id="alert-threshold-status" role="status" aria-live="polite"></p>
+    </div>
+  </div>
+
+  <div class="settings-card" style="margin-top: 1.5rem;">
+    <h3>Notification Preferences</h3>
+    <p class="settings-card-desc">Manage how the system sends notifications</p>
+
+    <div class="settings-row">
+      <div>
+        <div class="settings-row-title">SMS Notifications</div>
+        <div class="settings-row-desc">Send alerts via SMS</div>
+      </div>
+      <button
+        type="button"
+        class="toggle-btn"
+        id="sms-toggle-btn"
+        data-enabled="false"
+        aria-pressed="false"
+      >
+        Disabled
+      </button>
+    </div>
+  </div>
+</section>
+    </div>
+
+    <script defer src="../../assets/js/password-confirm.js"></script>
+    <script defer src="../../assets/js/admin-panel.js"></script>
+  </body>
+</html>
